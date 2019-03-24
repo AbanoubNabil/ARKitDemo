@@ -20,7 +20,17 @@ class ViewController: UIViewController {
             sceneView.presentScene(scene)
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let configuration = ARWorldTrackingConfiguration()
+        sceneView.session.run(configuration)
+    }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        sceneView.session.pause()
+    }
 
 }
 
