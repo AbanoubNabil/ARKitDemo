@@ -34,3 +34,17 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: ARSKViewDelegate {
+    func session(_ session: ARSession, didFailWithError error: Error) {
+        
+    }
+    
+    func sessionWasInterrupted(_ session: ARSession) {
+        
+    }
+    
+    func sessionInterruptionEnded(_ session: ARSession) {
+        
+    }
+    
+}
