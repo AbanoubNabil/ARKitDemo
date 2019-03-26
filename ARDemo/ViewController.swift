@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet var sceneView: ARSKView!
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+     sceneView.delegate = self
         if let scene = SKScene(fileNamed: "Scene") {
             sceneView.presentScene(scene)
         }
@@ -35,6 +35,18 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: ARSKViewDelegate {
+    
+//    func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
+//
+//    }
+    
+    func view(_ view: ARSKView, didAdd node: SKNode, for anchor: ARAnchor) {
+        let birdnode = SKSpriteNode(imageNamed: "bird")
+        birdnode.xScale = 0.25
+        birdnode.yScale = 0.25
+        node.addChild(birdnode)
+    }
+    
     func session(_ session: ARSession, didFailWithError error: Error) {
         
     }
