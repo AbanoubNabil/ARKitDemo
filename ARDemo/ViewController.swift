@@ -36,10 +36,16 @@ class ViewController: UIViewController {
 
 extension ViewController: ARSKViewDelegate {
     
-//    func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
-//
-//    }
-    
+    func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
+        if GameScene.gameState == .spwanBirds{
+         let bird = Bird()
+            bird.setupBird()
+            return bird
+        }else{
+            return SKNode()
+        }
+    }
+
     func view(_ view: ARSKView, didAdd node: SKNode, for anchor: ARAnchor) {
         let birdnode = SKSpriteNode(imageNamed: "bird")
         birdnode.xScale = 0.25

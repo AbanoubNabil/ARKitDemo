@@ -17,12 +17,30 @@ class GameScene: SKScene {
     var numberOfBirds = 10
     var timerLabel:SKLabelNode!
     var counterLabel:SKLabelNode!
-    
+    static var gameState : GameState = .none
 
+    func performInitialSpwan() {
+        GameScene.gameState = .spwanBirds
+        
+        for _ in 1 ... numberOfBirds {
+            spwanBird()
+        }
+    }
+    
+    override func didMove(to view: SKView) {
+        let waitAction = SKAction.wait(forDuration: 0.5)
+        let spwanAction = SKAction.run {
+            self.performInitialSpwan()
+        }
+        self.run(SKAction.sequence([waitAction,spwanAction]))
+    }
+    
     func spwanBird() {
+        
         guard let sceneView = self.view as? ARSKView else {
             return
         }
+        
         if let currentFrame = sceneView.session.currentFrame {
             
             var translation = matrix_identity_float4x4
