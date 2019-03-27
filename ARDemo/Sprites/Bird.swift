@@ -32,6 +32,7 @@ class Bird : SKSpriteNode {
         let duration = randomNumber(lowerBound: 15, upperBound: 20)
         let fade = SKAction.fadeOut(withDuration: TimeInterval(duration))
         let removeBird = SKAction.run {
+            NotificationCenter.default.post(name: Notification.Name("spwan"), object: nil)
             self.removeFromParent()
         }
         let flySequence = SKAction.sequence([fade, removeBird])
